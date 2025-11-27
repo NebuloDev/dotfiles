@@ -1,4 +1,4 @@
-# KDE Terminals
+# Terminals
 
 Terminals are a surprisingly convoluted aspect of any Linux desktop.
 
@@ -8,7 +8,7 @@ They split into two aspects, shells, and emulators. Shells are the programs that
 
 Most distros come with bash out of the box. While being widely accepted, it is rudamentary.
 
-Much better options exist, like zsh, but my personal favorite for day-to-day usage is [Fish](https://fishshell.com/) [[Arch](https://archlinux.org/packages/extra/x86_64/fish/), [CachyOS](https://packages.cachyos.org/package/extra/x86_64/fish)]. It comes with autocomplete and a ton of nice quality of life features.
+Much better options exist, like zsh, but my personal favorite for day-to-day usage is [Fish](https://fishshell.com/) [[Arch](https://archlinux.org/packages/extra/x86_64/fish/)]. It comes with autocomplete and a ton of nice quality of life features.
 
 > CachyOS uses fish by default
 
@@ -20,9 +20,9 @@ Personally, I'm a fan of drop-down terminal emulators, opposed to dedicated wind
 
 Here is a list of my personal go-to's, both windowed and drop-down:
 
-- Konsole - KDE's default terminal emulator, a good to have [[Arch](https://archlinux.org/packages/extra/x86_64/konsole/), [CachyOS](https://packages.cachyos.org/package/cachyos-extra-v3/x86_64_v3/konsole)]
-- Yakuake - The drop-down version of Konsole, uses same profiles [[Arch](https://archlinux.org/packages/extra/x86_64/yakuake/), [CachyOS](https://packages.cachyos.org/package/cachyos-extra-v3/x86_64_v3/yakuake)]
-- Ghostty - The most customisable one, possibly less performant [[Arch](https://archlinux.org/packages/extra/x86_64/ghostty/), [CachyOS](https://packages.cachyos.org/package/cachyos-extra-v3/x86_64_v3/ghostty)]
+- Konsole - KDE's default terminal emulator, a good to have [[Arch](https://archlinux.org/packages/extra/x86_64/konsole/)]
+- Yakuake - The drop-down version of Konsole, uses same profiles [[Arch](https://archlinux.org/packages/extra/x86_64/yakuake/)]
+- Ghostty - The most customisable one, possibly less performant [[Arch](https://archlinux.org/packages/extra/x86_64/ghostty/)]
     - As of v1.2, supports slide-in terminals
 
 ## Configuration
@@ -88,7 +88,7 @@ To use a theme (at least for fish), edit the line that you added into the config
 oh-my-posh init fish --config 'theme-path' | source
 ```
 
-Replace theme-path with a path or link to the `.omp.json` file that you are using for the theme. For themes that come packaged with oh-my-posh, just the name of the theme without any pathing or file extensions is fine.
+Replace `theme-path` with a path or link to the `.omp.json` file that you are using for the theme. For themes that come packaged with oh-my-posh, just the name of the theme without any pathing or file extensions is fine.
 
 Currently I am using `blue-owl`.
 
@@ -98,9 +98,9 @@ The Konsole doesn't need pretty much any changes to the window itself, however s
 
 In top right corner, the Konsole menu can lead to the settings dropdown which opens the "Configure Konsole" menu. In the profiles section, setup a new profile, and immediately head for the appereance tab.
 
-This profile can be customised to your liking, but I like to use a modified version of the Campbell color scheme with the background for "Colour" and "Intense Colour" having the hex code #232627.
+This profile can be customised to your liking, but I like to use a modified version of the Campbell color scheme with the background for "Colour" and "Intense Colour" having the hex code `#232627`.
 
-Any font changes, which is needed for Oh My Posh, are also to be done here.
+Any font changes, which are needed for Oh My Posh, are also to be done here.
 
 Make sure to then set this new profile as the default in the general tab of the profile.
 

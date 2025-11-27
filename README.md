@@ -1,2 +1,3 @@
-# dotfiles
-My dotfiles for linux and more
+# Nebulo's dotfiles
+
+A compilation of guides and configuration files for different Linux setups and more.

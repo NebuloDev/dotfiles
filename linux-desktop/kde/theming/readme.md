@@ -4,7 +4,7 @@ KDE is a very customisable DE, and capable of a lot. Unfortunately, I prefer a s
 
 For my theming, I use two specific tools:
 
-- Kvantum for application theming [[Arch](https://archlinux.org/packages/extra/x86_64/kvantum/), [CachyOS](https://packages.cachyos.org/package/cachyos-extra-v3/x86_64_v3/kvantum)]
+- Kvantum for application theming [[Arch](https://archlinux.org/packages/extra/x86_64/kvantum/)]
 - Klassy for window decorations [[AUR](https://aur.archlinux.org/packages/klassy-bin)]
 
 The themes themselves are:
