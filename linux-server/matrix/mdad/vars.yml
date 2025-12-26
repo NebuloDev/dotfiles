@@ -1,0 +1,185 @@
+---
+
+matrix_domain: example.com
+matrix_homeserver_implementation: synapse
+
+# A secret used as a base, for generating various other secrets.
+# You can put any string here, but generating a strong one is preferred. You can create one with a command like `pwgen -s 64 1`.
+matrix_homeserver_generic_secret_key: 'DO_NOT_LEAVE_THIS_EMPTY'
+
+
+matrix_playbook_reverse_proxy_type: playbook-managed-traefik
+matrix_playbook_ssl_enabled: true
+traefik_config_entrypoint_web_secure_enabled: false
+traefik_container_web_host_bind_port: '127.0.0.1:81'
+traefik_config_entrypoint_web_forwardedHeaders_insecure: true
+# traefik_config_entrypoint_web_forwardedHeaders_trustedIPs: ['IP-ADDRESS-OF-YOUR-REVERSE-PROXY']
+
+matrix_playbook_public_matrix_federation_api_traefik_entrypoint_host_bind_port: '127.0.0.1:8449'
+matrix_playbook_public_matrix_federation_api_traefik_entrypoint_config_http3_enabled: false
+matrix_playbook_public_matrix_federation_api_traefik_entrypoint_config_custom:
+  forwardedHeaders:
+    insecure: true
+  # trustedIPs: ['IP-ADDRESS-OF-YOUR-REVERSE-PROXY']
+
+matrix_client_element_hostname: "element.example.com"
+matrix_client_element_room_directory_servers: []
+matrix_client_element_default_country_code: "NL"
+matrix_client_element_page_template_welcome_path: ~
+matrix_client_element_default_theme: 'dark'
+matrix_client_element_features_feature_video_rooms: true
+matrix_client_element_features_feature_group_calls: true
+matrix_client_element_configuration_extension_json: |
+  {
+    "disable_3pid_login": true
+  }
+
+matrix_appservice_double_puppet_enabled: false
+matrix_bridges_encryption_enabled: true
+matrix_bridges_encryption_default: true
+matrix_bridges_relay_enabled: false
+
+# TODO: Bridge avatars
+  
+matrix_mautrix_whatsapp_enabled: false
+# TODO: Check for bridge bot capitalisation
+matrix_mautrix_whatsapp_network_displayname_template: '{% raw %}{{or .BusinessName .PushName .Phone}} (WhatsApp){% endraw %}'
+matrix_mautrix_whatsapp_federate_rooms: false
+
+matrix_mautrix_telegram_enabled: false
+# TODO: Get api_id and api_hash under ios/android
+# TODO: Check for bridge bot capitalisation
+matrix_mautrix_telegram_federate_rooms: false
+
+matrix_mautrix_meta_instagram_enabled: false
+matrix_mautrix_meta_instagram_meta_ig_e2ee: true
+matrix_mautrix_meta_instagram_backfill_enabled: false
+matrix_mautrix_meta_instagram_appservice_displayname: "{{ matrix_mautrix_meta_instagram_meta_mode | capitalize }} Bridge Bot"
+matrix_mautrix_meta_instagram_bridge_displayname_suffix: |-
+  {{
+    ({
+      'facebook': '(Facebook)',
+      'facebook-tor': '(Facebook)',
+      'messenger': '(Messegner)',
+      'instagram': '(Instagram)',
+    })[matrix_mautrix_meta_instagram_meta_mode]
+  }}
+matrix_mautrix_meta_instagram_bridge_federate_rooms: false
+
+matrix_mautrix_discord_enabled: false
+matrix_mautrix_discord_appservice_bot_displayname: Discord Bridge Bot
+matrix_mautrix_discord_bridge_displayname_template: "{% raw %}{{or .GlobalName .Username}}{{if .Bot}} (bot){{end}} (Discord){% endraw %}"
+matrix_mautrix_discord_federate_rooms: false
+
+matrix_mautrix_googlechat_enabled: false
+matrix_mautrix_googlechat_federate_rooms: false
+matrix_mautrix_googlechat_bridge_encryption_allow: false
+matrix_mautrix_googlechat_bridge_encryption_default: false
+
+matrix_steam_bridge_enabled: false
+matrix_steam_bridge_appservice_bot_displayname: Steam Bridge Bot
+matrix_steam_bridge_federate_rooms: false
+
+matrix_synapse_admin_enabled: true
+matrix_synapse_admin_hostname: synapse-admin.example.com
+matrix_synapse_admin_path_prefix: /
+
+matrix_element_admin_enabled: true
+matrix_element_admin_hostname: element-admin.example.com
+
+matrix_element_call_enabled: true
+matrix_element_call_hostname: element-call.example.com
+# Temporary
+matrix_element_call_config_livekit_livekit_service_url: https://livekit-jwt.call.matrix.org
+
+matrix_synapse_experimental_features_msc4140_enabled: true
+matrix_synapse_experimental_features_msc4222_enabled: true
+
+# Temporary solution
+matrix_static_files_file_matrix_client_configuration_extension_json: |
+  {
+    "org.matrix.msc4143.rtc_foci": [
+      {
+        "type": "livekit",
+        "url": "https://livekit-jwt.call.matrix.org"
+      }
+    ]
+  }
+
+exim_relay_enabled: false
+matrix_coturn_enabled: false
+matrix_rtc_enabled: false
+
+matrix_authentication_service_enabled: true
+
+# Generate this encryption secret with: `openssl rand -hex 32`
+matrix_authentication_service_config_secrets_encryption: 'DO_NOT_LEAVE_THIS_EMPTY'
+
+matrix_authentication_service_config_passwords_enabled: false
+matrix_authentication_service_config_upstream_oauth2_providers:
+  - # A unique identifier for the provider
+    # Must be a valid ULID
+    id: 01KDC2R1BSP40QQS921B29CGEG
+
+    issuer: https://auth.example.com
+    human_name: Provider
+
+    # A brand identifier for the provider, which will be used to display a logo
+    # on the login page. Values supported by the default template are:
+    #  - `apple`
+    #  - `google`
+    #  - `facebook`
+    #  - `github`
+    #  - `gitlab`
+    #  - `twitter`
+    #brand_name: google
+
+    client_id: DO_NOT_LEAVE_THIS_EMPTY
+    client_secret: DO_NOT_LEAVE_THIS_EMPTY
+    token_endpoint_auth_method: client_secret_post
+    scope: "openid email profile"
+    discovery_mode: oidc
+    pkce_method: auto
+
+    # What to do when receiving an OIDC Backchannel logout request.
+    # Possible values are:
+    #  - `do_nothing` (default): do nothing, other than validating and logging the request
+    #  - `logout_browser_only`: Only log out the MAS 'browser session' started by this OIDC session
+    #  - `logout_all`: Log out all sessions started by this OIDC session, including MAS 'browser sessions' and client sessions
+    on_backchannel_logout: logout_all
+
+    claims_imports:
+      subject:
+        template: "{% raw %}{{ user.sub }}{% endraw %}"
+        
+        localpart:
+          action: require
+          template: "{% raw %}{{ user.sub }}{% endraw %}"
+
+          # How to handle when localpart already exists.
+          # Possible values are (default: fail):
+          # - `fail` : Fails the upstream OAuth 2.0 login.
+          # - `add` : Adds the upstream account link to the existing user, regardless of whether there is an existing link or not.
+          # - `replace` : Replace any existing upstream OAuth 2.0 identity link for this provider on the matching user.
+          # - `set` : Adds the upstream account link *only* if there is no existing link for this provider on the matching user.
+          on_conflict: fail
+
+        # The display name is the user's display name.
+        displayname:
+          action: suggest
+          template: "{% raw %}{{ user.name }}{% endraw %}"
+
+        # An email address to import.
+        email:
+          action: suggest
+          template: "{% raw %}{{ user.email }}{% endraw %}"
+
+        # An account name, for display purposes only
+        # This helps end user identify what account they are using
+        account_name:
+          #template: "@{{ user.preferred_username }}"
+
+devture_systemd_docker_base_ipv6_enabled: true
+
+# The value used here must be shorter than 100 characters.
+postgres_connection_password: 'DO_NOT_LEAVE_THIS_EMPTY'

@@ -1,0 +1,13 @@
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+keybind = global:ctrl+shift+r=reset
+
+# Shaders that I found on https://github.com/0xhckr/ghostty-shaders
+# I'm on and off with enabling them
+#custom-shader = ~/.config/ghostty/shaders/tft.glsl
+#custom-shader = ~/.config/ghostty/shaders/bettercrt.glsl
+custom-shader = ~/.config/ghostty/shaders/cursor-warp.glsl
+
+# Sometimes I toggle this, can be buggy
+#quick-terminal-autohide=true
+
+background=#202020
