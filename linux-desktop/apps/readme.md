@@ -45,6 +45,9 @@ If browsing the Arch Repository, CachyOS repository, or AUR is too much, Pamac i
 > Unity engines typically work with Visual Studio instead of Visual Studio Code, but it can be achieved through careful setup. Some resources I found are from [Microsoft](https://code.visualstudio.com/docs/other/unity) themselves and the [Unity Forums](https://discussions.unity.com/t/resolved-vscode-and-editor-on-linux-what-happens-when-vscode-is-from-aur-and-unity-is-from-flathub/1658951).
 
 **Utilities**:
+- VirtualBox - Virtual machine management [[Arch](https://archlinux.org/packages/extra/x86_64/virtualbox/)]
+    - During install, a host module will be requested, I recommend using the DKMS module [[Arch](https://archlinux.org/packages/extra/x86_64/virtualbox-host-dkms/)]
+    - For most users, the guest additions ISO is very useful [[Arch](https://archlinux.org/packages/extra/any/virtualbox-guest-iso/)]
 - OpenJDK - Java Development suite (more info on the [Arch Wiki](https://wiki.archlinux.org/title/Java#OpenJDK)) [[Arch](https://archlinux.org/packages/extra/x86_64/jdk-openjdk/)]
 - NVM - Manager for different Node.js versions [[Arch](https://archlinux.org/packages/extra/any/nvm/)]
 - Termius - Modern SSH and SFTP client [[AUR](https://aur.archlinux.org/packages/termius)]
