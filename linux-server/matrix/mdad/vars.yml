@@ -29,7 +29,6 @@ matrix_client_element_hostname: "chat.example.com"
 matrix_client_element_permalink_prefix: "https://m.example.com"
 matrix_client_element_room_directory_servers: ['example.com']
 matrix_client_element_default_country_code: "NL"
-matrix_client_element_page_template_welcome_path: ~
 matrix_client_element_default_theme: 'dark'
 matrix_client_element_features_feature_video_rooms: true
 matrix_client_element_features_feature_group_calls: true
