@@ -7,10 +7,10 @@ matrix_homeserver_implementation: synapse
 # You can put any string here, but generating a strong one is preferred. You can create one with a command like `pwgen -s 64 1`.
 matrix_homeserver_generic_secret_key: 'DO_NOT_LEAVE_THIS_EMPTY'
 
-
 matrix_playbook_reverse_proxy_type: playbook-managed-traefik
 matrix_playbook_ssl_enabled: true
 traefik_config_entrypoint_web_secure_enabled: false
+matrix_federation_traefik_entrypoint_tls: true
 traefik_container_web_host_bind_port: '127.0.0.1:81'
 traefik_config_entrypoint_web_forwardedHeaders_insecure: true
 # traefik_config_entrypoint_web_forwardedHeaders_trustedIPs: ['IP-ADDRESS-OF-YOUR-REVERSE-PROXY']
@@ -22,8 +22,12 @@ matrix_playbook_public_matrix_federation_api_traefik_entrypoint_config_custom:
     insecure: true
   # trustedIPs: ['IP-ADDRESS-OF-YOUR-REVERSE-PROXY']
 
-matrix_client_element_hostname: "element.example.com"
-matrix_client_element_room_directory_servers: []
+matrix_matrixto_enabled: true
+matrix_matrixto_hostname: m.example.com
+
+matrix_client_element_hostname: "chat.example.com"
+matrix_client_element_permalink_prefix: "https://m.example.com"
+matrix_client_element_room_directory_servers: ['example.com']
 matrix_client_element_default_country_code: "NL"
 matrix_client_element_page_template_welcome_path: ~
 matrix_client_element_default_theme: 'dark'
@@ -81,14 +85,14 @@ matrix_steam_bridge_appservice_bot_displayname: Steam Bridge Bot
 matrix_steam_bridge_federate_rooms: false
 
 matrix_synapse_admin_enabled: true
-matrix_synapse_admin_hostname: synapse-admin.example.com
+matrix_synapse_admin_hostname: synapse.example.com
 matrix_synapse_admin_path_prefix: /
 
 matrix_element_admin_enabled: true
-matrix_element_admin_hostname: element-admin.example.com
+matrix_element_admin_hostname: element.example.com
 
 matrix_element_call_enabled: true
-matrix_element_call_hostname: element-call.example.com
+matrix_element_call_hostname: call.example.com
 # Temporary
 matrix_element_call_config_livekit_livekit_service_url: https://livekit-jwt.call.matrix.org
 
@@ -119,7 +123,7 @@ matrix_authentication_service_config_passwords_enabled: false
 matrix_authentication_service_config_upstream_oauth2_providers:
   - # A unique identifier for the provider
     # Must be a valid ULID
-    id: 01KDC2R1BSP40QQS921B29CGEG
+    id: 01KDC2R1BSP40QQS921B29CGEG # Change this
 
     issuer: https://auth.example.com
     human_name: Provider
