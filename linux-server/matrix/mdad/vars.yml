@@ -104,7 +104,7 @@ matrix_static_files_file_matrix_client_configuration_extension_json: |
     "org.matrix.msc4143.rtc_foci": [
       {
         "type": "livekit",
-        "url": "https://livekit-jwt.call.matrix.org"
+        "livekit_service_url": "https://livekit-jwt.call.matrix.org"
       }
     ]
   }
