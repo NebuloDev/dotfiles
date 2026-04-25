@@ -14,7 +14,7 @@ I've compiled certain "presets" with time. These will guide the entire setup and
 > Most of these **are** available on the [KDE Store](https://store.kde.org/browse/), and hence downloadable directly from plasma.
 > Breeze themes are pre-installed with KDE, no need to install those :)
 
-### Modern Breeze (Current)
+### Nebulo (Current)
 
 Themes: 
 - [Breeze](github.com/KDE/breeze) as my plasma/global theme
@@ -27,7 +27,7 @@ Additional Applets:
 - [kAirPods](https://github.com/can1357/kAirPods) (Optional)
 
 Attached configuration files:
-- Modern_Breeze.klpw (Klassy)
+- Nebulo.klpw (Klassy)
 
 There are two panels, one at the bottom, which is full-width, floating, and always visible. Recommended height for both panels is 46px.
 
